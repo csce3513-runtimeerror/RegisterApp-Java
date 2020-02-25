@@ -29,7 +29,29 @@
             <input onsubmit="Sign In"> 
 		</form>
 	</div>
-		
+<script>
+    function validateForm()
+    {
+        var EmployeeID = document.forms["SignIn"]["EmployeeID"].value;
+        var Password = document.forms["SignIn"]["Password"].value;
+
+        if ((EmployeeID == '')) && (Password == '')
+        {
+            document.getElementById("msg").innerHTML = "The Employee Id and Passwords fields must not be empty.";
+            return false;
+        }
+            esle if (EmployeeId == "")
+            {
+                document.getElementById("msg").innerHTML = "The Employee Id field must not be empty.";
+                return false;  
+            } 
+            esle if (Password == "")
+            {
+                document.getElementById("msg").innerHTML = "The Password field must not be empty.";
+                return false;  
+            }
+    }
+</script>
 </body>
 
 </html>
