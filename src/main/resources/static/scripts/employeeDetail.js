@@ -3,11 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("signOutImage").addEventListener("click", signOut);
 });
 function saveEmployee() {
-    alert("saved!");
     if (!validateInput()) {
         return;
     }
-    document.getElementById("employeeSavedAlertModal").style.display="block";
+    document.getElementById("saved").style.display="block";
     const requestPayload = {
         firstName: document.getElementById("firstName").value,
         lastName: document.getElementById("lastName").value,
@@ -16,6 +15,7 @@ function saveEmployee() {
     };
     ajaxPost("/employeeDetail", requestPayload, (callbackResponse) => {
     });
+    document.getElementById("employeeId").style.display="block";
 }
 function validateInput() {
     if (document.getElementById("firstName").value == "") {
