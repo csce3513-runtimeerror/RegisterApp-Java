@@ -1,4 +1,5 @@
 package edu.uark.registerapp.models.api;
+<<<<<<< HEAD
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -101,10 +102,14 @@ public class Employee extends ApiResponse {
 		return this;
 	}
 
+=======
+public class Employee extends ApiResponse {
+>>>>>>> 93afcbd321f768277bd94057ea72b33a2bc3930c
 	private boolean isInitialEmployee;
 	public boolean getIsInitialEmployee() {
 		return this.isInitialEmployee;
 	}
+<<<<<<< HEAD
 	public Employee setIsInitialEmployee(final boolean isInitialEmployee) {
 		this.isInitialEmployee = isInitialEmployee;
 		return this;
@@ -143,3 +148,14 @@ public class Employee extends ApiResponse {
 		this.setCreatedOn(employeeEntity.getCreatedOn());
 	}
 }
+=======
+	public ApiResponse setIsInitialEmployee(final boolean isInitialEmployee) {
+		this.isInitialEmployee = isInitialEmployee;
+		return this;
+	}
+	public Employee() {
+		super();
+		this.isInitialEmployee = false;
+	}
+}
+>>>>>>> 93afcbd321f768277bd94057ea72b33a2bc3930c
