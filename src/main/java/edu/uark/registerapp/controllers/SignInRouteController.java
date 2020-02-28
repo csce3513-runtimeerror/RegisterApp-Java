@@ -35,10 +35,10 @@ public class SignInRouteController {
 
 
 
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_FROM_URLENCODED_VALUE)
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ModelAndView performSignIn(
         //define an object that will represent the sign in request and add it as a parameter 
-
+        EmployeeSignIn signIn,
         HttpServletRequest request
     ) {
         //use the credentials provided in the request body and the "id" property

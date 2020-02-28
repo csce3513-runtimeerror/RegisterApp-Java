@@ -8,6 +8,9 @@ public class EmployeeSignIn {
         this.employeeId = employeeId;
         this.password = password;
     }
+    public EmployeeSignIn(){
+        super();
+    }
 
     public String getEmployeeId(){
         return employeeId;
@@ -15,5 +18,5 @@ public class EmployeeSignIn {
     public String getPassword() {
         return password;
     }
-    
+
 }
