@@ -1,6 +1,9 @@
 package edu.uark.registerapp.controllers.enums;
 
 public enum ViewNames {
+	SIGN_IN("signIn", "/"),
+	MAIN_MENU("mainMenu"),
+	EMPLOYEE_DETAIL("employeeDetail"),
 	PRODUCT_DETAIL("productDetail"),
 	PRODUCT_LISTING("productListing", "/");
 	

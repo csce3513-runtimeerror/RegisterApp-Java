@@ -1,6 +1,6 @@
 package edu.uark.registerapp.controllers;
 
-public abstract class BaseController {
+public abstract class BaseRestController {
 	protected String buildInitialQueryParameter(
 		final String name,
 		final String value
