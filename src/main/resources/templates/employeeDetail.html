@@ -27,7 +27,7 @@
 					<tr class="hidden">
 						<td>ID:</td>
 						<td>
-							<input id="employeeId" type="hidden" th:value="${!employee.isEmpty} ? ${employee.id} : ''" />
+							<input id="employeeId" type="hidden" th:value="${!employee.isEmpty} ? ${employee.id} : ''" style="display:none"/>
 						</td>
 					</tr>
 					<tr class="hidden">
@@ -81,13 +81,17 @@
                         <td>
                         <button id="save" value="Save">Save</button>
                         </td>
-                    </tr>
+					</tr>
+					<tr>
+						<td>
+							<p id="saved" style="display:none">Employee Saved</p>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
 
 		<!-- TODO: An action element to initiate a save -->
-
 		<div id="employeeSavedAlertModal" class="modal animate-opacity-show" style="display:none">
 			<div class="modal-content">
 				<div class="container gray-blue">
