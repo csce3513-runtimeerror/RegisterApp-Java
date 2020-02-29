@@ -18,7 +18,7 @@ import edu.uark.registerapp.models.api.EmployeeSignIn;
 
 @Controller
 @RequestMapping(value = "/")
-public class SignInRouteController {
+public class SignInRouteController extends BaseRouteController {
     //route for initial page load
     String employeeId, password;
     @RequestMapping(method = RequestMethod.GET)
