@@ -4,7 +4,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.models.api.EmployeeSignIn;
-import edu.uark.registerapp.models.entities.EmployeeEntity;
 
 @Controller
 @RequestMapping(value = "/signIn")
@@ -41,7 +39,7 @@ public class SignInRouteController extends BaseRouteController {
     @GetMapping("/redirectWithRedirectPrefix")
     public ModelAndView redirectWithUsingRedirectPrefix(ModelMap model) {
         model.addAttribute("attribute", "redirectWithRedirectPrefix");
-        return new ModelAndView("redirect:/redirectedUrl", model);
+        return new ModelAndView("redirect:/EmployeeDetail", model);
     }
 
 
