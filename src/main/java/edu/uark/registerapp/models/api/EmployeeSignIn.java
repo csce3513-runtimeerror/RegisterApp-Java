@@ -18,5 +18,10 @@ public class EmployeeSignIn {
     public String getPassword() {
         return password;
     }
-
+    public void setEmployeeId(String id) {
+        employeeId = id;
+    }
+    public void setPassword(String pass) {
+        password = pass;
+    }
 }
