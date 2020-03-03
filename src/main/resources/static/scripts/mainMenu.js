@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-    var error = "function has not been implemented ";
+    var errorMessage = "function has not been implemented ";
     document.getElementById("st").addEventListener("click", function() 
     {
-        displayError(error);
+        displayError(errorMessage);
     });
 
     document.getElementById("2").addEventListener("click", function()
