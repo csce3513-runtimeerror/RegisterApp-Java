@@ -13,14 +13,13 @@ function saveActionClick(event) {
     }
     const saveActionElement = event.target;
     saveActionElement.disabled = true;
-    const empId = document.getElementById("employeeId").value
+    var empId = document.getElementById("employeeId").value
     const requestPayload = {
         firstName: document.getElementById("firstName").value,
         lastName: document.getElementById("lastName").value,
         password: document.getElementById("password").value,
         empType: document.getElementById("empType").value
     };
-    var empId = document.getElementById("employeeId").value;
     const employeeDetailIdIsDefined = ((empId != null) && (empId.trim() !== ""));
     if (!employeeDetailIdIsDefined) {
         ajaxPost("/employeeDetail", requestPayload, (callbackResponse) => {
