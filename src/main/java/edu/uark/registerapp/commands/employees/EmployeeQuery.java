@@ -13,7 +13,7 @@ import edu.uark.registerapp.models.entities.EmployeeEntity;
 import edu.uark.registerapp.models.repositories.EmployeeRepository;
 
 @Service
-public class EmployeeQuery implements ResultCommandInterface<Product> {
+public class EmployeeQuery implements ResultCommandInterface<Employee> {
 	@Override
 	public Employee execute() {
 		final Optional<EmployeeEntity> employeeEntity =
@@ -28,7 +28,7 @@ public class EmployeeQuery implements ResultCommandInterface<Product> {
 	// Properties
     private UUID employeeId; 
     public UUID getEmployeeId() {
-		    return this.EmployeeId;
+		    return this.employeeId;
 	}
 	public EmployeeQuery setEmployeeId(final UUID employeeId) {
 		this.employeeId = employeeId;

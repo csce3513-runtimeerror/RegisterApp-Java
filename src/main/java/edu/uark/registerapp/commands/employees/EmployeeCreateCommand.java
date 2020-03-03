@@ -13,6 +13,7 @@ import edu.uark.registerapp.commands.exceptions.ConflictException;
 import edu.uark.registerapp.commands.exceptions.UnprocessableEntityException;
 import edu.uark.registerapp.models.api.Employee;
 import edu.uark.registerapp.models.entities.EmployeeEntity;
+import edu.uark.registerapp.models.entities.ProductEntity;
 import edu.uark.registerapp.models.repositories.EmployeeRepository;
 
 @Service
@@ -32,6 +33,7 @@ public class EmployeeCreateCommand implements ResultCommandInterface<Employee> {
 
 	// Helper methods
 	private void validateProperties() {
+<<<<<<< HEAD
 		if (StringUtils.isBlank(this.apiEmployee.getFirstName())) {
 			throw new UnprocessableEntityException("firstname");
         }
@@ -41,6 +43,11 @@ public class EmployeeCreateCommand implements ResultCommandInterface<Employee> {
         if (StringUtils.isBlank(this.apiEmployee.getPassword())) {
 			throw new UnprocessableEntityException("password");
         }
+=======
+		if (StringUtils.isBlank(this.apiEmployee.getLookupCode())) {
+			throw new UnprocessableEntityException("lookupcode");
+		}
+>>>>>>> a5d8ec36f41cdbd4c954fb879a8fb1a9ac122acf
 	}
 
 	@Transactional
@@ -69,4 +76,8 @@ public class EmployeeCreateCommand implements ResultCommandInterface<Employee> {
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
+<<<<<<< HEAD
+=======
+	private ProductRepository productRepository;
+>>>>>>> a5d8ec36f41cdbd4c954fb879a8fb1a9ac122acf
 }
