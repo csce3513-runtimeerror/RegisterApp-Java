@@ -1,4 +1,4 @@
-package edu.uark.registerapp.commands.employees;
+package main.java.edu.uark.registerapp.commands.employees;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -39,8 +39,11 @@ public class EmployeeUpdateCommand implements ResultCommandInterface<Employee> {
 
 	// Helper methods
 	private void validateProperties() {
-		if (StringUtils.isBlank(this.apiEmployee.getLookupCode())) {
-			throw new UnprocessableEntityException("lookupcode");
+		if (StringUtils.isBlank(this.apiEmployee.getFirstName())) {
+			throw new UnprocessableEntityException("firstname");
+        }
+        if (StringUtils.isBlank(this.apiEmployee.getLastName())) {
+			throw new UnprocessableEntityException("lastname");
 		}
 	}
 
