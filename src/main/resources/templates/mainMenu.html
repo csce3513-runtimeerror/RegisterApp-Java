@@ -22,7 +22,13 @@
 		</div>
 
         <!-- TODO: Add the various action button elements -->
-        
+        <p></p>
+        <button id = "st">Start Transaction</button> <br>
+        <button  id = "view">View Products</button> <br>
+        <button id = "1"> Create Employee</button> <br>
+        <button id ="2">Sales Report</button> <br>
+		<button  id = "3">Cashier Report</button>  <br>
+		<button  id = "4">Sign-Out</button>  <br>
 	</div>
 
 	<div class="hidden">
@@ -37,7 +43,32 @@
 					isRefreshedElement.checked = false;
 					location.reload();
 				}
-			}
+            }
+            
+            var manager = true;
+  
+        if(manager) {
+            document.getElementById('1').style.visibility = 'visible';
+        } else {
+            document.getElementById('1').style.visibility = 'hidden';
+        }
+
+        if(manager) {
+            document.getElementById('2').style.visibility = 'visible';
+        } else {
+            document.getElementById('2').style.visibility = 'hidden';
+        }
+
+        if(manager) {
+            document.getElementById('3').style.visibility = 'visible';
+        } else {
+            document.getElementById('3').style.visibility = 'hidden';
+        }
+
+		
+
+
+
 		</script>
 	</div>
 

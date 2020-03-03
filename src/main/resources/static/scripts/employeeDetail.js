@@ -7,10 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Save
-function saveActionClick() {
+function saveActionClick(event) {
     if (!validateInput()) {
         return;
     }
+    const saveActionElement = event.target;
+    saveActionElement.disabled = true;
+    const empId = document.getElementById("employeeId").value
     const requestPayload = {
         firstName: document.getElementById("firstName").value,
         lastName: document.getElementById("lastName").value,
@@ -18,17 +21,23 @@ function saveActionClick() {
         empType: document.getElementById("empType").value
     };
     var empId = document.getElementById("employeeId").value;
-    if (empId == "") {
+    const employeeDetailIdIsDefined = ((empId != null) && (empId.trim() !== ""));
+    if (!employeeDetailIdIsDefined) {
         ajaxPost("/employeeDetail", requestPayload, (callbackResponse) => {
+            if (isSuccessResponse(callbackResponse)) {
+				displayProductSavedAlertModal();
+			}
         });
     }
     else {
         ajaxPatch("/employeeDetail", requestPayload, (callbackResponse) => {
+            if (isSuccessResponse(callbackResponse)) {
+				displayProductSavedAlertModal();
+			}
         });
     }
     document.getElementById("employeeId").style.visibility="visible";
 	// TODO: Actually save the employee via an AJAX call
-	displayEmployeeSavedAlertModal();
 }
 
 function validateInput() {
@@ -82,5 +91,5 @@ function getSavedAlertModalElement() {
 	return document.getElementById("employeeSavedAlertModal");
 }
 function signOut() {
-    window.location.replace("/signIn");
+    window.location.replace("/");
 }
