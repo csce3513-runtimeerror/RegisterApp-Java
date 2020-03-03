@@ -36,13 +36,13 @@ public class ProductListingRouteController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/employeeDetail", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/employeeDetail", method = RequestMethod.GET)
 	public ModelAndView showEmployeeDetail() {
 		ModelAndView modelAndView =
 			new ModelAndView("employeeDetail");
 		modelAndView.addObject("employee", (new Employee()));
 		return modelAndView;
-	}
+	}*/
 
 	// Properties
 	@Autowired
