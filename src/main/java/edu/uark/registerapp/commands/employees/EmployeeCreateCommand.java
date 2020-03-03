@@ -33,7 +33,6 @@ public class EmployeeCreateCommand implements ResultCommandInterface<Employee> {
 
 	// Helper methods
 	private void validateProperties() {
-<<<<<<< HEAD
 		if (StringUtils.isBlank(this.apiEmployee.getFirstName())) {
 			throw new UnprocessableEntityException("firstname");
         }
@@ -43,18 +42,13 @@ public class EmployeeCreateCommand implements ResultCommandInterface<Employee> {
         if (StringUtils.isBlank(this.apiEmployee.getPassword())) {
 			throw new UnprocessableEntityException("password");
         }
-=======
-		if (StringUtils.isBlank(this.apiEmployee.getLookupCode())) {
-			throw new UnprocessableEntityException("lookupcode");
-		}
->>>>>>> a5d8ec36f41cdbd4c954fb879a8fb1a9ac122acf
 	}
 
 	@Transactional
 	private EmployeeEntity createEmployeeEntity() {
 		final Optional<EmployeeEntity> queriedEmployeeEntity =
 			this.employeeRepository
-				.findByLookupCode(this.apiEmployee.getId());
+				.findById(this.apiEmployee.getId());
 
 		if (queriedEmployeeEntity.isPresent()) {
 			throw new ConflictException("Id");
@@ -76,8 +70,4 @@ public class EmployeeCreateCommand implements ResultCommandInterface<Employee> {
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
-<<<<<<< HEAD
-=======
-	private ProductRepository productRepository;
->>>>>>> a5d8ec36f41cdbd4c954fb879a8fb1a9ac122acf
 }
