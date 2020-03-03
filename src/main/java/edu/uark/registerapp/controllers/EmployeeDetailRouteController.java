@@ -35,6 +35,7 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 		return new ModelAndView(ViewModelNames.EMPLOYEE_TYPES.getValue());
 	}
 
+<<<<<<< HEAD
 	@RequestMapping(value = "/{employeeId}", method = RequestMethod.GET)
 	public ModelAndView startWithEmployee(
 		@PathVariable final UUID employeeId,
@@ -49,6 +50,26 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 			return this.buildInvalidSessionResponse();
 		} else if (!this.isElevatedUser(activeUserEntity.get())) {
 			return this.buildNoPermissionsResponse();
+=======
+    @RequestMapping(value = "/{productId}", method = RequestMethod.GET)
+	public ModelAndView startWithProduct(@PathVariable final UUID productId) {
+		final ModelAndView modelAndView =
+			new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName());
+
+		try {
+			modelAndView.addObject(
+				ViewModelNames.PRODUCT.getValue(),
+				this.productQuery.setProductId(productId).execute());
+		} catch (final Exception e) {
+			modelAndView.addObject(
+				ViewModelNames.ERROR_MESSAGE.getValue(),
+				e.getMessage());
+			modelAndView.addObject(
+				ViewModelNames.PRODUCT.getValue(),
+				(new Product())
+					.setCount(0)
+					.setLookupCode(StringUtils.EMPTY));
+>>>>>>> 2956e5380feb1c8429d653eecd7da98dd5b6bfd7
 		}
 
 		// TODO: Query the employee details using the request route parameter
@@ -61,4 +82,12 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 		// TODO: Helper method to determine if any active users Exist
 		return true;
 	}
+<<<<<<< HEAD
 }
+=======
+	
+	// Properties
+	@Autowired
+	private ProductQuery productQuery;
+}
+>>>>>>> 2956e5380feb1c8429d653eecd7da98dd5b6bfd7

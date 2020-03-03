@@ -1,22 +1,36 @@
+let hideEmployeeSavedAlertTimer = undefined;
+
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("save").addEventListener("click", saveEmployee);
+    // TODO: Things that need doing when the view is loaded
+    document.getElementById("save").addEventListener("click", saveActionClick);
     document.getElementById("signOutImage").addEventListener("click", signOut);
 });
-function saveEmployee() {
+
+// Save
+function saveActionClick() {
     if (!validateInput()) {
         return;
     }
-    document.getElementById("saved").style.display="block";
     const requestPayload = {
         firstName: document.getElementById("firstName").value,
         lastName: document.getElementById("lastName").value,
         password: document.getElementById("password").value,
         empType: document.getElementById("empType").value
     };
-    ajaxPost("/employeeDetail", requestPayload, (callbackResponse) => {
-    });
-    document.getElementById("employeeId").style.display="block";
+    var empId = document.getElementById("employeeId").value;
+    if (empId == "") {
+        ajaxPost("/employeeDetail", requestPayload, (callbackResponse) => {
+        });
+    }
+    else {
+        ajaxPatch("/employeeDetail", requestPayload, (callbackResponse) => {
+        });
+    }
+    document.getElementById("employeeId").style.visibility="visible";
+	// TODO: Actually save the employee via an AJAX call
+	displayEmployeeSavedAlertModal();
 }
+
 function validateInput() {
     if (document.getElementById("firstName").value == "") {
         displayError("Error: Invalid First Name");
@@ -40,6 +54,32 @@ function validateInput() {
      else {
          return true;
      }
+}
+
+function displayEmployeeSavedAlertModal() {
+	if (hideEmployeeSavedAlertTimer) {
+		clearTimeout(hideEmployeeSavedAlertTimer);
+	}
+
+	const savedAlertModalElement = getSavedAlertModalElement();
+	savedAlertModalElement.style.display = "none";
+	savedAlertModalElement.style.display = "block";
+
+	hideEmployeeSavedAlertTimer = setTimeout(hideEmployeeSavedAlertModal, 1200);
+}
+
+function hideEmployeeSavedAlertModal() {
+	if (hideEmployeeSavedAlertTimer) {
+		clearTimeout(hideEmployeeSavedAlertTimer);
+	}
+
+	getSavedAlertModalElement().style.display = "none";
+}
+// End save
+
+//Getters and setters
+function getSavedAlertModalElement() {
+	return document.getElementById("employeeSavedAlertModal");
 }
 function signOut() {
     window.location.replace("/signIn");
