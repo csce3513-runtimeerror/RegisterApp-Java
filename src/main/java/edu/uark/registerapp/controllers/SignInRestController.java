@@ -28,9 +28,7 @@ public class SignInRestController extends BaseRestController {
         final Optional<EmployeeEntity> employeeEntity =
 			this.employeeRepository.findByEmployeeId(Integer.parseInt(request.getSession().getId()));
         this.employeeRepository.delete(employeeEntity.get());
-
-
-
+        
         return (new ApiResponse()).setRedirectUrl(ViewNames.SIGN_IN.getRoute());
     }
     @Autowired
