@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.uark.registerapp.commands.employees.EmployeeQuery;
+import edu.uark.registerapp.commands.exceptions.NotFoundException;
 import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.models.api.EmployeeSignIn;
@@ -36,8 +37,13 @@ public class SignInRouteController extends BaseRouteController {
         emp = new EmployeeSignIn(employeeId, password);
         ModelMap model= new ModelMap(ViewNames.EMPLOYEE_DETAIL.getViewName(), allParams);
         //check if employees exist
-        if(employeeRepository.existsByEmployeeId(Integer.parseInt(employeeId))) {
-            redirectWithUsingRedirectPrefix(model);
+        if(employeeId != null) {
+            if(employeeRepository.existsByEmployeeId(Integer.parseInt(employeeId))) {
+             redirectWithUsingRedirectPrefix(model);
+            }
+        }
+        else {
+            throw new NotFoundException("Employee");
         }
         performSignIn(emp, request);
         return "Parameters are " + allParams.entrySet();
