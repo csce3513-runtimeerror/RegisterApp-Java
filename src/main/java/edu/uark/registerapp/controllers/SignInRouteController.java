@@ -42,9 +42,6 @@ public class SignInRouteController extends BaseRouteController {
              redirectWithUsingRedirectPrefix(model);
             }
         }
-        else {
-            throw new NotFoundException("Employee");
-        }
         performSignIn(emp, request);
         return "Parameters are " + allParams.entrySet();
     }
