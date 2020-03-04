@@ -41,8 +41,8 @@ public class SignInRouteController extends BaseRouteController {
             if(employeeRepository.existsByEmployeeId(Integer.parseInt(employeeId))) {
              redirectWithUsingRedirectPrefix(model);
             }
+            performSignIn(emp, request);
         }
-        performSignIn(emp, request);
         return "Parameters are " + allParams.entrySet();
     }
 
