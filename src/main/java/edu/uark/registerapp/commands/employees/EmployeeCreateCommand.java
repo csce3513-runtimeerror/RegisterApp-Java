@@ -48,7 +48,7 @@ public class EmployeeCreateCommand implements ResultCommandInterface<Employee> {
 	private EmployeeEntity createEmployeeEntity() {
 		final Optional<EmployeeEntity> queriedEmployeeEntity =
 			this.employeeRepository
-				.findByLookupCode(this.apiEmployee.getId());
+				.findById(this.apiEmployee.getId());
 
 		if (queriedEmployeeEntity.isPresent()) {
 			throw new ConflictException("Id");

@@ -32,7 +32,9 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 		// TODO: Logic to determine if the user associated with the current session
 		//  is able to create an employee
 
-		return new ModelAndView(ViewModelNames.EMPLOYEE_TYPES.getValue());
+		ModelAndView mv = new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName());
+		mv.addObject("employee", new Employee());
+		return mv;
 	}
 
 	@RequestMapping(value = "/{employeeId}", method = RequestMethod.GET)
