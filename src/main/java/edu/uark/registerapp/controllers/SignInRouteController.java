@@ -61,7 +61,7 @@ public class SignInRouteController extends BaseRouteController{
     @GetMapping("/redirectWithRedirectPrefix")
     public ModelAndView redirectWithUsingRedirectPrefix(ModelMap model) {
         model.addAttribute("attribute", "redirectWithRedirectPrefix");
-        return new ModelAndView("redirect:/EmployeeDetail", model);
+        return new ModelAndView("redirect:/employeeDetail", model);
     }
 
 

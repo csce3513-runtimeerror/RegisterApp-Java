@@ -45,16 +45,54 @@
 					</tr>
 				</tbody>
 			</table>
+			<script type="text/javascript">
+
+				var manager = true;
+	  
+	
+				  if(manager) {
+					document.getElementById("productId").disabled = false;
+					document.getElementById("productLookupCode").disabled = false;
+					document.getElementById("productCount").disabled = false;
+				  } else {
+					document.getElementById("productId").disabled = true;
+					document.getElementById("productLookupCode").disabled = true;
+					document.getElementById("productCount").disabled = true;
+
+				  }
+			</script>
 		</div>
 
-		<div class="productActionsWrapper">
+		<div  class="productActionsWrapper" id="elevatedChecker" >
 			<br />
 			<div id="deleteActionContainer" th:class="${product.isEmpty} ? hidden : ''">
 				<button id="deleteButton" type="button" class="action">Delete</button>
 				<br />
 				<br />
+				<script type="text/javascript">
+
+					var manager = true;
+		  
+		
+					  if(manager) {
+					  document.getElementById("deleteButton").style.visibility = 'visible';
+					  } else {
+					  document.getElementById("deleteButton").style.visibility = 'hidden';
+					  }
+				</script>
 			</div>
 			<button id="saveButton" type="button" class="action">Save</button>
+			<script type="text/javascript">
+
+				var manager = true;
+	  
+	
+				  if(manager) {
+				  document.getElementById("saveButton").style.visibility = 'visible';
+				  } else {
+				  document.getElementById("saveButton").style.visibility = 'hidden';
+				  }
+			</script>
 		</div>
 
 		<div id="productSavedAlertModal" class="modal animate-opacity-show">
@@ -67,6 +105,18 @@
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+
+			var manager = true;
+  
+
+			  if(!manager) {
+				
+				document.getElementById("elevatedChecker").style.display = "none";
+				location.replace("/productListing.html")
+
+			  }
+		</script>
 	</div>
 		
 </body>
