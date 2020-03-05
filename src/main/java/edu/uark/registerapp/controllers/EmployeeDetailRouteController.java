@@ -52,7 +52,8 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 		// check if employees exist
 		// If no employees exist Should immediately redirect[4] to the Employee Detail
 		// view/document
-		if (!employeeRepository.existsByEmployeeId(Integer.parseInt(employeeId)) || employeeClassification.isElevatedUser(employeeClassification.getClassification())) {
+		if (!employeeRepository.existsByEmployeeId(Integer.parseInt(employeeId)) || 
+		employeeClassification.isElevatedUser(employeeClassification.getClassification())) {
 			final ModelAndView mv = new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName());
 			mv.addObject("employee", new Employee());
 			return mv;
