@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.uark.registerapp.commands.employees.ActiveEmployeeExistsQuery;
 import edu.uark.registerapp.commands.employees.EmployeeQuery;
 import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
@@ -30,6 +31,16 @@ public class SignInRouteController extends BaseRouteController{
     EmployeeSignIn emp;
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView showSignInPage() {
+        ModelAndView modelAndView;
+        try {
+            this.activeEmployeeExists.execute();
+            modelAndView = new ModelAndView(ViewNames.SIGN_IN.getViewName());
+        } catch (Exception e) {
+            //redirt to employeeDetail
+            return new ModelAndView("redirect:employeeDetail");
+        }
+        return modelAndView;
+        /*
         ModelAndView modelAndView = new ModelAndView(ViewNames.SIGN_IN.getViewName());
         try {
             modelAndView.addObject(
@@ -40,8 +51,13 @@ public class SignInRouteController extends BaseRouteController{
             e.getMessage());
         }
         return modelAndView;
+
+        //return new ModelAndView().redirect.concat() to get to employee detail page
+        */
     }
 
+    //how to use this method
+    /*
     public String getEmployees(@RequestParam Map<String, String> allParams) {
         //make use of functionality built in Task 5
         employeeId = allParams.get("ID");
@@ -62,7 +78,7 @@ public class SignInRouteController extends BaseRouteController{
     public ModelAndView redirectWithUsingRedirectPrefix(ModelMap model) {
         model.addAttribute("attribute", "redirectWithRedirectPrefix");
         return new ModelAndView("redirect:/employeeDetail", model);
-    }
+    }*/
 
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
@@ -82,6 +98,7 @@ public class SignInRouteController extends BaseRouteController{
 
         }
 
+        //redirect to the main menu if valid credentials
         return new ModelAndView(
             REDIRECT_PREPEND.concat(
                 ViewNames.MAIN_MENU.getRoute()));
@@ -89,4 +106,5 @@ public class SignInRouteController extends BaseRouteController{
     @Autowired
     private EmployeeRepository employeeRepository;
     private EmployeeQuery employeeQuery;
+    private ActiveEmployeeExistsQuery activeEmployeeExists;
 }
