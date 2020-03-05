@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.uark.registerapp.commands.employees.EmployeeQuery;
-import edu.uark.registerapp.commands.exceptions.NotFoundException;
 import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.models.api.EmployeeSignIn;
@@ -24,12 +23,24 @@ import edu.uark.registerapp.models.repositories.EmployeeRepository;
 
 @Controller
 @RequestMapping(value = "/")
-public class SignInRouteController extends BaseRouteController {
-    private final HttpServletRequest request = null;
+public class SignInRouteController{
     // route for initial page load
     String employeeId, password;
     EmployeeSignIn emp;
     @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView showSignInPage() {
+        ModelAndView modelAndView = new ModelAndView(ViewNames.SIGN_IN.getViewName());
+        try {
+            modelAndView.addObject(
+                ViewModelNames.EMPLOYEE_TYPES.getValue(),
+                this.employeeQuery.execute());
+        } catch (final Exception e) {
+            modelAndView.addObject ( ViewModelNames.ERROR_MESSAGE.getValue(),
+            e.getMessage());
+        }
+        return modelAndView;
+    }
+
     public String getEmployees(@RequestParam Map<String, String> allParams) {
         //make use of functionality built in Task 5
         employeeId = allParams.get("ID");
