@@ -7,12 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("2").addEventListener("click", function()
     {
-        displayError(error);
+        displayError(errorMessage);
     });
 
     document.getElementById("3").addEventListener("click", function() 
     {
-        displayError(error)
+        displayError(errorMessage)
     });
     document.getElementById("4").addEventListener("click", signOutActionClickHandler());
 });
