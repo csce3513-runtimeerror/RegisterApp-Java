@@ -27,6 +27,8 @@ import edu.uark.registerapp.models.repositories.EmployeeRepository;
 import edu.uark.registerapp.controllers.SignInRestController;
 import edu.uark.registerapp.models.enums.EmployeeClassification;
 import edu.uark.registerapp.commands.employees.EmployeeQuery;
+import edu.uark.registerapp.commands.employees.ActiveEmployeeExistsQuery;
+
 
 @Controller
 @RequestMapping(value = "/employeeDetail")
@@ -111,9 +113,15 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 	EmployeeQuery employeeQuery;
 	Employee employee;
 	EmployeeClassification employeeClassification;
+ 	ActiveEmployeeExistsQuery active;
 	// Helper methods
 	private boolean activeUserExists() {
 		// TODO: Helper method to determine if any active users Exist
-		return true;
+		if ( employeeRepository.existsByIsActive(employee.getIsActive())){
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }
