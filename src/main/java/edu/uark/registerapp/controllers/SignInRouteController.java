@@ -75,7 +75,7 @@ public class SignInRouteController extends BaseRouteController{
 			new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName());
         
         try {
-            modelAndView.addObject(ViewModelNames.EMPLOYEE_TYPES.getValue(),
+            modelAndView.addObject(ViewModelNames.EMPLOYEE_DETAIL.getValue(),
                 this.employeeQuery.setEmployeeId(UUID.fromString(idtemp)).execute());
         }
         catch (final Exception e) {
