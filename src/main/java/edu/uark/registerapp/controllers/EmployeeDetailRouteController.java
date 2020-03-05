@@ -55,6 +55,7 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 			mv.addObject("employee", new Employee());
 			return mv;
 		}
+		
 		else if(!employee.getIsActive()) {
 			redirectWithUsingRedirectPrefix(model);
 		}
