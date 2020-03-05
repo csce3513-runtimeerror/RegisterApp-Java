@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.uark.registerapp.commands.employees.ActiveEmployeeExistsQuery;
 import edu.uark.registerapp.commands.employees.EmployeeQuery;
+import edu.uark.registerapp.commands.exceptions.NotFoundException;
 import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.models.api.EmployeeSignIn;
@@ -83,21 +84,19 @@ public class SignInRouteController extends BaseRouteController{
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ModelAndView performSignIn( EmployeeSignIn signIn, HttpServletRequest request ) {
-        //use the credentials provided in the request body and the "id" property
-        //of the (HttpServletRequest)request.getsession() variable 
-        //to sign in the user
-        String idtemp = request.getRequestedSessionId();
-        final ModelAndView modelAndView =
+        String idtemp = request.getParameter("Id");
+        String passtemp = request.getParameter("Password");
+        
+        ModelAndView modelAndView =
 			new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName());
         
         try {
             modelAndView.addObject(ViewModelNames.EMPLOYEE_DETAIL.getValue(),
                 this.employeeQuery.setEmployeeId(UUID.fromString(idtemp)).execute());
         }
-        catch (final Exception e) {
-
+        catch (Exception e) {
+            throw new NotFoundException("Employee");
         }
-
         //redirect to the main menu if valid credentials
         return new ModelAndView(
             REDIRECT_PREPEND.concat(
