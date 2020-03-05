@@ -23,7 +23,8 @@ import edu.uark.registerapp.models.repositories.EmployeeRepository;
 
 @Controller
 @RequestMapping(value = "/")
-public class SignInRouteController{
+public class SignInRouteController extends BaseRouteController{
+    private final HttpServletRequest request = null;
     // route for initial page load
     String employeeId, password;
     EmployeeSignIn emp;
