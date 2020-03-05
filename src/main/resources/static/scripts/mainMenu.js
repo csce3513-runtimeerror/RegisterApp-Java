@@ -14,7 +14,5 @@ document.addEventListener("DOMContentLoaded", () => {
     {
         displayError(errorMessage);
     });
-    document.getElementById("4").addEventListener("click", function() {
-        window.location.replace("/"); 
-    });
+    document.getElementById("4").addEventListener("click", signOutActionClickHandler());
 });
