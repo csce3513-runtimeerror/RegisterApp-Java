@@ -40,7 +40,22 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 		@RequestParam final Map<String, String> queryParameters,
 		final HttpServletRequest request
 	) {
-
+		/*boolean activeUserExists;
+		try {
+			this.activeEmployeeExistsQuery.execute(); // Query if an active user exists
+			activeUserExists = true;
+		} catch (final NotFoundException e) {
+			activeUserExists = false;
+		}
+		if (activeUserExists) { // If a current user
+			final Optional<ActiveUserEntity> activeUserEntity =
+				this.getCurrentUser(request);
+			if (!activeUserEntity.isPresent()) {
+				return this.buildInvalidSessionResponse();
+			} else if (!this.isElevatedUser(activeUserEntity.get())) { // Check if current user is elevated
+				return this.buildNoPermissionsResponse();
+			}
+		}*/
 		// TODO: Logic to determine if the user associated with the current session
 		//  is able to create an employee
 		//make use of functionality built in Task 5
