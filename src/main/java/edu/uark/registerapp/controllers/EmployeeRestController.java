@@ -18,6 +18,7 @@ import edu.uark.registerapp.controllers.enums.QueryParameterNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.models.api.ApiResponse;
 import edu.uark.registerapp.models.api.Employee;
+import edu.uark.registerapp.models.entities.EmployeeEntity;
 
 @RestController
 @RequestMapping(value = "/api/employee")
@@ -47,6 +48,7 @@ public class EmployeeRestController extends BaseRestController {
 
 		// TODO: Create an employee;
 		final Employee createdEmployee = new Employee();
+		EmployeeEntity emp = new EmployeeEntity(employee);
 
 
 		if (isInitialEmployee) {

@@ -15,7 +15,12 @@
             "name": "Debug (Launch)-RegisterApplication<RegisterApp-Java>",
             "request": "launch",
             "mainClass": "edu.uark.registerapp.RegisterApplication",
-            "projectName": "RegisterApp-Java"
+            "projectName": "RegisterApp-Java",
+            "env":{
+                "JDBC_DATABASE_URL":"jdbc:postgresql://ec2-3-234-169-147.compute-1.amazonaws.com:5432/d3jquend0j33pp?sslmode=require",
+                "JDBC_DATABASE_USERNAME":"eytfhygmkjridf",
+                "JDBC_DATABASE_PASSWORD":"54a54af3db03e29f994ea8f61c730fadba5d577f0626298c4a71b582e992f20d"
+            }
         }
     ]
 }
