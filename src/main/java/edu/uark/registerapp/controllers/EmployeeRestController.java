@@ -21,6 +21,7 @@ import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.models.api.ApiResponse;
 import edu.uark.registerapp.models.api.Employee;
 import edu.uark.registerapp.models.entities.EmployeeEntity;
+import edu.uark.registerapp.models.repositories.EmployeeRepository;
 import edu.uark.registerapp.commands.employees.EmployeeUpdateCommand;
 @RestController
 @RequestMapping(value = "/api/employee")
@@ -47,15 +48,15 @@ public class EmployeeRestController extends BaseRestController {
 		}
 
 		// TODO: Create an employee;
-		final Employee createdEmployee = new Employee();
 		EmployeeEntity emp = new EmployeeEntity(employee);
+		empRep.save(emp);
 
 		if (isInitialEmployee) {
-			createdEmployee.setRedirectUrl(ViewNames.SIGN_IN.getRoute().concat(this.buildInitialQueryParameter(
-					QueryParameterNames.EMPLOYEE_ID.getValue(), createdEmployee.getEmployeeId())));
+			employee.setRedirectUrl(ViewNames.SIGN_IN.getRoute().concat(this.buildInitialQueryParameter(
+					QueryParameterNames.EMPLOYEE_ID.getValue(), employee.getEmployeeId())));
 		}
 
-		return createdEmployee.setIsInitialEmployee(isInitialEmployee);
+		return employee.setIsInitialEmployee(isInitialEmployee);
 	}
 
 	@RequestMapping(value = "/{employeeId}", method = RequestMethod.PATCH)
@@ -80,5 +81,6 @@ public class EmployeeRestController extends BaseRestController {
 	@Autowired
 	private ActiveEmployeeExistsQuery active;
 	EmployeeUpdateCommand employeeUpdateCommand;
+	EmployeeRepository empRep;
 	
 }
