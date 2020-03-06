@@ -14,13 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
     {
         displayError(errorMessage);
     });
-    document.getElementById("4").addEventListener("click", signOutActionClickHandler());
+   // document.getElementById("4").addEventListener("click", signOutActionClickHandler());
     
-   document.getElementById("signOut").addEventListener("click", signOutActionClickHandler());
+  
 
-   document.getElementById("signOut").addEventListener("click", window.assign("employeeDetails"));
+   document.getElementById("view").addEventListener("click", window.assign("employeeDetail"));
 
-   document.getElementById("signOut").addEventListener("click", window.assign("signIn"));
+   document.getElementById("1").addEventListener("click", window.assign("productListing"));
 
 });
  
