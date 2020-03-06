@@ -40,9 +40,9 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 		@RequestParam final Map<String, String> queryParameters,
 		final HttpServletRequest request
 	) {
-		/*boolean activeUserExists;
+		boolean activeUserExists;
 		try {
-			this.activeEmployeeExistsQuery.execute(); // Query if an active user exists
+			this.active.execute(); // Query if an active user exists
 			activeUserExists = true;
 		} catch (final NotFoundException e) {
 			activeUserExists = false;
@@ -55,11 +55,15 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 			} else if (!this.isElevatedUser(activeUserEntity.get())) { // Check if current user is elevated
 				return this.buildNoPermissionsResponse();
 			}
-		}*/
+		}
+		ModelAndView modelAndView =
+		new ModelAndView("employeeDetail");
+		modelAndView.addObject("employee", (new Employee()));
+		return modelAndView;
 		// TODO: Logic to determine if the user associated with the current session
 		//  is able to create an employee
 		//make use of functionality built in Task 5
-		employeeId = queryParameters.get("ID");
+		/*employeeId = queryParameters.get("ID");
 		password = queryParameters.get("password");
 		emp = new EmployeeSignIn(employeeId, password);
 		final ModelMap model = new ModelMap(ViewNames.EMPLOYEE_DETAIL.getViewName(), queryParameters);
@@ -67,14 +71,8 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 		// check if employees exist
 		// If no employees exist Should immediately redirect[4] to the Employee Detail
 		// view/document
-<<<<<<< HEAD
-		if (!employeeRepository.existsByEmployeeId(Integer.parseInt(employeeId)) || 
-		employeeClassification.isElevatedUser(employeeClassification.getClassification()))
-		 {
-=======
 		if (employeeId != null && (!employeeRepository.existsByEmployeeId(Integer.parseInt(employeeId)) || 
 		employeeClassification.isElevatedUser(employeeClassification.getClassification()))) {
->>>>>>> d170d792ca1cd105661c03b3976ca78c5398848e
 			final ModelAndView mv = new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName());
 			mv.addObject("employee", new Employee());
 			return mv;
@@ -86,7 +84,7 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 		else{
 			redirectToMain(model);
 		}
-		return null;
+		return null;*/
 
 	}
 	
@@ -137,7 +135,7 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 	EmployeeClassification employeeClassification;
  	ActiveEmployeeExistsQuery active;
 	// Helper methods
-	private boolean activeUserExists() {
+	/*private boolean activeUserExists() {
 		// TODO: Helper method to determine if any active users Exist
 		if ( employeeRepository.existsByIsActive(employee.getIsActive())){
 			return true;
@@ -145,5 +143,5 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 		else {
 			return false;
 		}
-	}
+	}*/
 }
