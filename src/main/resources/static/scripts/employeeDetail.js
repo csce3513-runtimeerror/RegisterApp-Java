@@ -3,7 +3,7 @@ let hideEmployeeSavedAlertTimer = undefined;
 document.addEventListener("DOMContentLoaded", () => {
     // TODO: Things that need doing when the view is loaded
     document.getElementById("save").addEventListener("click", saveActionClick);
-    document.getElementById("signOutImage").addEventListener("click", signOut);
+    document.getElementById("signOutImage").addEventListener("click", signOutActionClickHandler());
 });
 
 // Save
@@ -88,7 +88,4 @@ function hideEmployeeSavedAlertModal() {
 //Getters and setters
 function getSavedAlertModalElement() {
 	return document.getElementById("employeeSavedAlertModal");
-}
-function signOut() {
-    window.location.replace("/");
 }
