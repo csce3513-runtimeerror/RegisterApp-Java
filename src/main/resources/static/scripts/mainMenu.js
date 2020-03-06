@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
         displayError(errorMessage);
     });
-   // document.getElementById("4").addEventListener("click", signOutActionClickHandler());
+    document.getElementById("4").addEventListener("click", signOutActionClickHandler);
     
   
 

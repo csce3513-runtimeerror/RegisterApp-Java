@@ -3,7 +3,7 @@ let hideEmployeeSavedAlertTimer = undefined;
 document.addEventListener("DOMContentLoaded", () => {
     // TODO: Things that need doing when the view is loaded
     document.getElementById("save").addEventListener("click", saveActionClick);
-    document.getElementById("signOutImage").addEventListener("click", signOutActionClickHandler());
+    document.getElementById("signOutImage").addEventListener("click", signOutActionClickHandler);
 });
 
 // Save

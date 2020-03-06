@@ -57,7 +57,7 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 			}
 		}
 		ModelAndView modelAndView =
-		new ModelAndView("employeeDetail");
+		new ModelAndView("employeeDetail"); 
 		modelAndView.addObject("employee", (new Employee()));
 		return modelAndView;
 		// TODO: Logic to determine if the user associated with the current session
@@ -133,6 +133,7 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 	EmployeeQuery employeeQuery;
 	Employee employee;
 	EmployeeClassification employeeClassification;
+	@Autowired
  	ActiveEmployeeExistsQuery active;
 	// Helper methods
 	/*private boolean activeUserExists() {
