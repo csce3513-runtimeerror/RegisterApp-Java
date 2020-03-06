@@ -15,4 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
         displayError(errorMessage)
     });
     document.getElementById("4").addEventListener("click", signOutActionClickHandler());
+    
+   document.getElementById("signOut").addEventListener("click", signOutActionClickHandler());
+
+   document.getElementById("signOut").addEventListener("click", window.assign("employeeDetails"));
+
+   document.getElementById("signOut").addEventListener("click", window.assign("signIn"));
+
 });
+ 
