@@ -40,7 +40,7 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 		@RequestParam final Map<String, String> queryParameters,
 		final HttpServletRequest request
 	) {
-		boolean activeUserExists;
+		/*boolean activeUserExists;
 		try {
 			this.active.execute(); // Query if an active user exists
 			activeUserExists = true;
@@ -55,9 +55,9 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 			} else if (!this.isElevatedUser(activeUserEntity.get())) { // Check if current user is elevated
 				return this.buildNoPermissionsResponse();
 			}
-		}
+		}*/
 		ModelAndView modelAndView =
-		new ModelAndView("employeeDetail");
+		new ModelAndView("employeeDetail"); 
 		modelAndView.addObject("employee", (new Employee()));
 		return modelAndView;
 		// TODO: Logic to determine if the user associated with the current session
