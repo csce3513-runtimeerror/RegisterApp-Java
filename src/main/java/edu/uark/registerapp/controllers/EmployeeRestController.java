@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.uark.registerapp.commands.employees.ActiveEmployeeExistsQuery;
+import edu.uark.registerapp.commands.employees.EmployeeCreateCommand;
 import edu.uark.registerapp.commands.exceptions.NotFoundException;
 import edu.uark.registerapp.controllers.enums.QueryParameterNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
@@ -48,8 +49,9 @@ public class EmployeeRestController extends BaseRestController {
 		}
 
 		// TODO: Create an employee;
-		EmployeeEntity emp = new EmployeeEntity(employee);
-		empRep.save(emp);
+		//EmployeeEntity emp = new EmployeeEntity(employee);
+		//empRep.save(emp);
+		employeeCreateCommand.execute();
 
 		if (isInitialEmployee) {
 			employee.setRedirectUrl(ViewNames.SIGN_IN.getRoute().concat(this.buildInitialQueryParameter(
@@ -81,6 +83,7 @@ public class EmployeeRestController extends BaseRestController {
 	@Autowired
 	private ActiveEmployeeExistsQuery active;
 	EmployeeUpdateCommand employeeUpdateCommand;
+	EmployeeCreateCommand employeeCreateCommand;
 	EmployeeRepository empRep;
 	
 }
