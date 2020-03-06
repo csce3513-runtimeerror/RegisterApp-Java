@@ -133,6 +133,7 @@ public class EmployeeDetailRouteController extends BaseRouteController {
 	EmployeeQuery employeeQuery;
 	Employee employee;
 	EmployeeClassification employeeClassification;
+	@Autowired
  	ActiveEmployeeExistsQuery active;
 	// Helper methods
 	/*private boolean activeUserExists() {
